@@ -8,7 +8,7 @@ class RMS:
          self.root.title("Student Result Management System")
          self.root.geometry("1350x700+0+0") 
          self.root.config(bg="white")
-         self.logo_dash = ImageTk.PhotoImage(file="images/appicon.png") 
+         self.logo_dash = ImageTk.PhotoImage(file="appicon.png") 
 
          title=Label(self.root,text="Student Result Management System",padx=10,compound=LEFT,image=self.logo_dash,font=("goudy old style",20,"bold"),bg="#033054",fg="white").place(x=0,y=0,relwidth=1,height=50)
          M_Frame=LabelFrame(self.root,text="Menu",font=("times new roman",15),bg="white")
@@ -21,7 +21,7 @@ class RMS:
          btn_logout=Button(M_Frame,text="Logout",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2").place(x=900,y=5,width=200,height=40)
          btn_exit=Button(M_Frame,text="Exit",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2").place(x=1120,y=5,width=200,height=40)
         
-         self.bg_img=Image.open("images/bg.png")  #bhai add address of image in our system saved with .py extension inside"" 
+         self.bg_img=Image.open("bg.png")  #bhai add address of image in our system saved with .py extension inside"" 
          self.bg_img=self.bg_img.resize((920,350),Image.ANTIALIAS)
          self.bg_img=ImageTk.PhotoImage(self.bg_img)
 
