@@ -47,7 +47,7 @@ class CourseClass:
 
         #===== ===== Search Panel ===== ===== #
           self.var_search=StringVar()
-          lbl_search_courseName=Label(self.root,text=" Course Name",font=("goudy old style",15,'bold'),bg="white").place(x=720,y=60)
+          lbl_search_courseName=Label(self.root,text="Course Name",font=("goudy old style",15,'bold'),bg="white").place(x=720,y=60)
           txt_search_courseName=Entry(self.root,textvariable=self.var_search,font=("goudy old style",15,'bold'),bg="lightyellow").place(x=870,y=60,width = 180)
           btn_search=Button(self.root,text="Search",font=("goudy old style",15,"bold"),bg="#03a9f4",fg="white",cursor="hand2",command=self.search).place(x=1070,y=60,width=120,height=28)
 
@@ -162,10 +162,11 @@ class CourseClass:
                    messagebox.showerror("Error","Select course from list",parent=self.root)
                 else:
                     op=messagebox.askyesno("Confirm","Do you want to delete this course",parent=self.root)
-                    cur.execute("delete from course where name=?",(self.var_course.get(),))
-                    con.commit()
-                    messagebox.showinfo("Delete","Course deleted Successfully",parent=self.root)
-                    self.clear()
+                    if op==True:
+                        cur.execute("delete from course where name=?",(self.var_course.get(),))
+                        con.commit()
+                        messagebox.showinfo("Delete","Course deleted Successfully",parent=self.root)
+                        self.clear()
 
         except Exception as ex:
             messagebox.showerror("Error",f"Error due to {str(ex)}")

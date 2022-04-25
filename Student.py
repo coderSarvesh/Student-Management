@@ -169,12 +169,12 @@ class StudentClass:
             if self.var_roll.get()=="":
                messagebox.showerror("Error","Roll number is required",parent=self.root)
             else:
-                cur.execute("select * from Student where roll=?",(self.var_roll.get(),))
+                cur.execute("select * from student where roll=?",(self.var_roll.get(),))
                 row=cur.fetchone()
                 if row!=None:
                    messagebox.showerror("Error","Roll No. already Exists",parent=self.root)
                 else:
-                    cur.execute("insert into Student(roll,name,email,gender,dob,contact,admission,course,state,city,pin,address) values(?,?,?,?,?,?,?,?,?,?,?,?)",(
+                    cur.execute("insert into student(roll,name,email,gender,dob,contact,admission,course,state,city,pin,address) values(?,?,?,?,?,?,?,?,?,?,?,?)",(
                         self.var_roll.get(),
                         self.var_name.get(),
                         self.var_email.get(),
@@ -201,12 +201,12 @@ class StudentClass:
             if self.var_roll.get()=="":
                messagebox.showerror("Error","Roll NO. name is required",parent=self.root)
             else:
-                cur.execute("select * from Student where roll=?",(self.var_roll.get(),))
+                cur.execute("select * from student where roll=?",(self.var_roll.get(),))
                 row=cur.fetchone()
                 if row==None:
                    messagebox.showerror("Error","Select Student  from list",parent=self.root)
                 else:
-                    cur.execute("update Student set name=?,email=?,gender=?,dob=?,contact=?,admission=?,course=?,state=?,city=?,pin=?,address=? where roll=?",(
+                    cur.execute("update student set name=?,email=?,gender=?,dob=?,contact=?,admission=?,course=?,state=?,city=?,pin=?,address=? where roll=?",(
                         self.var_name.get(),
                         self.var_email.get(),
                         self.var_gender.get(),
@@ -241,7 +241,7 @@ class StudentClass:
         self.var_pin.set(" "),
         self.txt_address.delete("1.0",END)
         self.txt_roll.config(state=NORMAL)
-        self.var_search.ser(" ")
+        self.var_search.set(text="")
    
    
     def delete(self):
@@ -251,14 +251,14 @@ class StudentClass:
             if self.var_roll.get()=="":
                messagebox.showerror("Error","Roll No. should be required",parent=self.root)
             else:
-                cur.execute("select * from Student where roll=?",(self.var_roll.get(),))
+                cur.execute("select * from student where roll=?",(self.var_roll.get(),))
                 row=cur.fetchone()
                 if row==None:
                    messagebox.showerror("Error","Select Student from the list",parent=self.root)
                 else:
-                    op=messagebox.askyesno("Confirm","Do you want to delete this course",parent=self.root)
+                    op=messagebox.askyesno("Confirm","Do you want to delete this student",parent=self.root)
                     if op==True:    
-                        cur.execute("delete from from  where roll=?",(self.var_roll.get(),))
+                        cur.execute("delete from student where roll=?",(self.var_roll.get(),))
                         con.commit()
                         messagebox.showinfo("Delete","Student deleted Successfully",parent=self.root)
                         self.clear()
@@ -270,7 +270,7 @@ class StudentClass:
         con=sqlite3.connect(database="rms.db")
         cur=con.cursor()
         try:
-            cur.execute("select * from Student ")
+            cur.execute("select * from student ")
             rows=cur.fetchall()
             self.CourseTable.delete(*self.CourseTable.get_children())
             for row in rows:

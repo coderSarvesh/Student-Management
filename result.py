@@ -48,7 +48,7 @@ class resultClass:
           btn_clear=Button(self.root,text ="Clear", font=("times new roman",15),bg="lightgray",activebackground="lightgray",cursor="hand2",command=self.clear).place(x=430,y=420,width=120,height=35)
 
       #======images=======
-          self.bg_img=Image.open("images/result.jpg")
+          self.bg_img=Image.open("result.png")
           self.bg_img=self.bg_img.resize((500,300),Image.ANTIALIAS)
           self.bg_img=ImageTk.PhotoImage(self.bg_img)
 
@@ -56,16 +56,16 @@ class resultClass:
 
       #====================================================
       def fetch_roll(self):
-          con = sqlite3.connect(database="rms.db")
-          cur=con.cursor()
-          try:
-                cur.execute("select roll from student")
-                rows=cur.cursor()
-                if len(rows)>0:
-                      for row in rows:
-                            self.row_list.append(row[0])
-          except Exception as ex:
-                messagebox.showerror("Error",f"Error due to {str(ex)}")
+        con=sqlite3.connect(database="rms.db")
+        cur=con.cursor()
+        try:
+            cur.execute("select roll from student")
+            rows=cur.fetchall()
+            if len(rows)>0:
+                 for row in rows:
+                     self.roll_list.append(row[0])
+        except Exception as ex:
+            messagebox.showerror("Error",f"Error due to {str(ex)}")
 
 
       def search(self):
@@ -73,12 +73,12 @@ class resultClass:
           cur = con.cursor()
           try:
                 cur.execute("select name,course from student where roll=?",(self.var_roll.get(),))
-                row = cur.fetchnone()
+                row = cur.fetchone()
                 if row!=None:
                       self.var_name.set(row[0])
                       self.var_course.set(row[1])
-                else:
-                      messagebox.showerror("Error","No record found",parent=self.root)
+            #     else:
+            #            messagebox.showerror("Error","No recording found",parent=self.root)
           except Exception as ex:
                 messagebox.showerror("Error", f"Error due to {str(ex)}")
 
@@ -89,13 +89,13 @@ class resultClass:
                       if self.var_name.get() == "":
                             messagebox.showerror("Error", "please first search student record ", parent=self.root)
                       else:
-                            cur.execute("select * from result where roll=? and course=?", (self.var_roll.get(),self.var_course.get))
+                            cur.execute("select * from result where roll=? and course=?", (self.var_roll.get(),self.var_course.get()))
                             row = cur.fetchone()
                             if row != None:
-                                  messagebox.showerror("Error", "Result already present", parent=self.root)
+                                 messagebox.showerror("Error", "Result already present", parent=self.root)
                             else:
-                                  per=(int(self.var_marks.get())*100)/int(self.var_full_marks.get())
-                                  cur.execute("insert into course(roll,name,course,marks_ob,full_marks,per) values(?,?,?,?,?,?)", (
+                                per=(int(self.var_marks.get())*100)/int(self.var_full_marks.get())
+                                cur.execute("insert into result(roll,name,course,marks_ob,full_marks,per) values(?,?,?,?,?,?)", (
                                         self.var_roll.get(),
                                         self.var_name.get(),
                                         self.var_course.get(),
@@ -103,9 +103,9 @@ class resultClass:
                                         self.var_full_marks.get(),
                                         str(per)
                                   ))
-                                  con.commit()
-                                  messagebox.showinfo("Success", "Course added !", parent=self.root)
-                                  self.show()
+                                con.commit()
+                                messagebox.showinfo("Success", "Result added !", parent=self.root)
+                                self.show()
                 except Exception as ex:
                       messagebox.showerror("Error", f"Error due to {str(ex)}")
 
