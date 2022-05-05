@@ -83,7 +83,7 @@ class StudentClass:
           self.txt_address.place(x=150, y=260, width=540, height=100)
 
          #====== ===== Buttons ====== ======#
-          self.btn_add=Button(self.root,text="Save",font=("goudy old style",15,"bold"),bg="#2196f3",fg="white",cursor="hand2",command=self.add)
+          self.btn_add=Button(self.root,text="Save",font=("goudy old style",15,"bold"),bg="#033054",fg="white",cursor="hand2",command=self.add)
           self.btn_add.place(x=150,y=400,width=110,height=40)
           self.btn_update=Button(self.root,text="Update",font=("goudy old style",15,"bold"),bg="#4caf50",fg="white",cursor="hand2",command=self.update)
           self.btn_update.place(x=270,y=400,width=110,height=40)

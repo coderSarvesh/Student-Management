@@ -17,7 +17,7 @@ class RMS:
      
        # root.resizable(0,0)
 
-         title=Label(self.root,text="Student Result Management System",padx=10,compound=LEFT,image=self.logo_dash,font=("goudy old style",20,"bold"),bg="#033054",fg="white").place(x=0,y=0,relwidth=1,height=50)
+         title=Label(self.root,text="Student Result Management System",padx=10,compound=LEFT,image=self.logo_dash,font=("goudy old style",20,"bold"),bg="#033054",fg="white").place(x=0,y=0,relwidth=1,height=68)
          M_Frame=LabelFrame(self.root,text="Menu",font=("times new roman",15),bg="white")
          M_Frame.place(x=10,y=70,width=1340,height=80)
 
@@ -31,7 +31,7 @@ class RMS:
          self.bg_img=self.bg_img.resize((1400,550),Image.ANTIALIAS)
          self.bg_img=ImageTk.PhotoImage(self.bg_img)
 
-         self.lbl_bg=Label(self.root,image=self.bg_img).place(x=0,y=200,height=400)
+         self.lbl_bg=Label(self.root,image=self.bg_img).place(x=0,y=150,height=500)
 
          self.lbl_course=Label(self.root,text="Total Courses\n[0]",font=("goudy old style",20),bd=10,relief=RIDGE,bg="#e43b06",fg="white")
          self.lbl_course.place(x=150,y=530,width=300,height=100)
