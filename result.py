@@ -48,7 +48,7 @@ class resultClass:
           btn_clear=Button(self.root,text ="Clear", font=("times new roman",15),bg="lightgray",activebackground="lightgray",cursor="hand2",command=self.clear).place(x=430,y=420,width=120,height=35)
 
       #======images=======
-          self.bg_img=Image.open("result.png")
+          self.bg_img=Image.open("result1.png")
           self.bg_img=self.bg_img.resize((500,300),Image.ANTIALIAS)
           self.bg_img=ImageTk.PhotoImage(self.bg_img)
 
@@ -105,7 +105,7 @@ class resultClass:
                                   ))
                                 con.commit()
                                 messagebox.showinfo("Success", "Result added !", parent=self.root)
-                                self.show()
+                                #self.show()
                 except Exception as ex:
                       messagebox.showerror("Error", f"Error due to {str(ex)}")
 
