@@ -15,7 +15,7 @@ class reportClass:
           self.root.title("Student Result Management System")
           self.root.focus_force()
 
-      #=====title=======
+    #=====title=======
           title=Label(self.root,text="View Student Results" ,font=("goudy old style",20,"bold"),bg="orange",fg="#262626").place(x=10,y=15,width=1180,height=50)
     #========== Search ===========#  
           self.var_search=StringVar() 
@@ -27,24 +27,24 @@ class reportClass:
 
     #=========== Labels ============# 
           lbl_roll=Label(self.root,text="Roll No" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=150,y=230,width=150,height=50)
-          lbl_name=Label(self.root,text="Name" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=300,y=230,width=150,height=50)
-          lbl_course=Label(self.root,text="Course" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=450,y=230,width=150,height=50)
-          lbl_marks=Label(self.root,text="Marks Obtained" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=600,y=230,width=150,height=50)
-          lbl_full=Label(self.root,text="Total Marks" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=750,y=230,width=150,height=50)
-          lbl_per=Label(self.root,text="Percentage" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=900,y=230,width=150,height=50)
+          lbl_name=Label(self.root,text="Name" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=300,y=230,width=200,height=50)
+          lbl_course=Label(self.root,text="Course" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=500,y=230,width=150,height=50)
+          lbl_marks=Label(self.root,text="Marks Obtained" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=650,y=230,width=150,height=50)
+          lbl_full=Label(self.root,text="Total Marks" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=800,y=230,width=150,height=50)
+          lbl_per=Label(self.root,text="Percentage" ,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE).place(x=950,y=230,width=150,height=50)
 
           self.roll=Label(self.root,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE)
           self.roll.place(x=150,y=280,width=150,height=50)
           self.name=Label(self.root,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE)
-          self.name.place(x=300,y=280,width=150,height=50)
+          self.name.place(x=300,y=280,width=200,height=50)
           self.course=Label(self.root,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE)
-          self.course.place(x=450,y=280,width=150,height=50)
+          self.course.place(x=500,y=280,width=150,height=50)
           self.marks=Label(self.root,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE)
-          self.marks.place(x=600,y=280,width=150,height=50)
+          self.marks.place(x=650,y=280,width=150,height=50)
           self.full=Label(self.root,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE)
-          self.full.place(x=750,y=280,width=150,height=50)
+          self.full.place(x=800,y=280,width=150,height=50)
           self.per=Label(self.root,font=("goudy old style",15,"bold"),bg="white",bd=2,relief=GROOVE)
-          self.per.place(x=900,y=280,width=150,height=50)
+          self.per.place(x=950,y=280,width=150,height=50)
 
  #----------- Buttons ----------- #
           btn_delete=Button(self.root,text='Delete',font=("goudy old style",15,"bold"),bg="red", fg="white", cursor="hand2",command=self.delete).place(x=500,y=350,width=150,height=35)
@@ -98,8 +98,9 @@ class reportClass:
                     op=messagebox.askyesno("Confirm","Do you want to delete this result",parent=self.root)
                     cur.execute("delete from result where rid=?",(self.var_id,))
                     con.commit()
-                    messagebox.showinfo("Delete","Course deleted Successfully",parent=self.root)
-                    self.clear()
+                    if(op==True):
+                     messagebox.showinfo("Delete","Course deleted Successfully",parent=self.root)
+                     self.clear()
 
           except Exception as ex:
             messagebox.showerror("Error",f"Error due to {str(ex)}")

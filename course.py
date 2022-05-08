@@ -23,9 +23,9 @@ class CourseClass:
 
         #======widgets=======
           lbl_courseName=Label(self.root,text="Course Name",font=("goudy old style",15,'bold'),bg='white').place(x=10,y=60)
-          lbl_duration=Label(self.root,text="Duration",font=("goudy old style",10,'bold'),bg='white').place(x=10,y=100)
-          lbl_charges=Label(self.root,text="Charges",font=("goudy old style",10,'bold'),bg='white').place(x=10,y=140)
-          lbl_description=Label(self.root,text="Description",font=("goudy old style",10,'bold'),bg='white').place(x=10,y=180)
+          lbl_duration=Label(self.root,text="Duration",font=("goudy old style",15,'bold'),bg='white').place(x=10,y=100)
+          lbl_charges=Label(self.root,text="Charges",font=("goudy old style",15,'bold'),bg='white').place(x=10,y=140)
+          lbl_description=Label(self.root,text="Description",font=("goudy old style",15,'bold'),bg='white').place(x=10,y=180)
 
          #===== ===== Entry Fields ====== =====#
           self.txt_courseName=Entry(self.root,textvariable=self.var_course,font=("goudy old style",15,'bold'),bg="lightyellow")
@@ -36,7 +36,7 @@ class CourseClass:
           self.txt_description.place(x=150, y=180, width=500, height=130)
 
          #====== ===== Buttons ====== ======#
-          self.btn_add=Button(self.root,text="Save",font=("goudy old style",15,"bold"),bg="#033054",fg="white",cursor="hand2",command=self.add)
+          self.btn_add=Button(self.root,text="Save",font=("goudy old style",15,"bold"),bg="#0676ad",fg="white",cursor="hand2",command=self.add)
           self.btn_add.place(x=150,y=400,width=110,height=40)
           self.btn_update=Button(self.root,text="Update",font=("goudy old style",15,"bold"),bg="#4caf50",fg="white",cursor="hand2",command=self.update)
           self.btn_update.place(x=270,y=400,width=110,height=40)
