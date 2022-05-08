@@ -30,8 +30,8 @@ class CourseClass:
          #===== ===== Entry Fields ====== =====#
           self.txt_courseName=Entry(self.root,textvariable=self.var_course,font=("goudy old style",15,'bold'),bg="lightyellow")
           self.txt_courseName.place(x=150,y=60,width=200)
-          txt_duration=Entry(self.root,textvariable=self.var_duration,font=("goudy old style",15,'bold'),bg="lightyellow").place(x=150,y=100,width=200)
-          txt_charges=Entry(self.root,textvariable=self.var_charges,font=("goudy old style",15,'bold'),bg="lightyellow").place(x=150,y=140,width=200)
+          self.txt_duration=Entry(self.root,textvariable=self.var_duration,font=("goudy old style",15,'bold'),bg="lightyellow").place(x=150,y=100,width=200)
+          self.txt_charges=Entry(self.root,textvariable=self.var_charges,font=("goudy old style",15,'bold'),bg="lightyellow").place(x=150,y=140,width=200)
           self.txt_description = Text(self.root,font=("goudy old style",15,'bold'),bg="lightyellow")
           self.txt_description.place(x=150, y=180, width=500, height=130)
 

@@ -1,6 +1,5 @@
 from importlib.resources import contents
 from multiprocessing import parent_process
-from optparse import Values
 from tkinter import*
 from PIL import Image, ImageTk
 from tkinter import ttk,messagebox
