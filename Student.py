@@ -168,7 +168,7 @@ class StudentClass:
             if self.var_roll.get()=="":
                messagebox.showerror("Error","Roll number is required",parent=self.root)
             elif self.var_a_date.get()<= self.var_dob.get():
-               messagebox.showerror("Error","Enter valid date",parent=self.root)
+               messagebox.showerror("Error","Enter valid date",parent=self.root)             
             else:
                 cur.execute("select * from student where roll=?",(self.var_roll.get(),))
                 row=cur.fetchone()
