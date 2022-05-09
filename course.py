@@ -65,7 +65,7 @@ class CourseClass:
           scrolly.config(command=self.CourseTable.yview)
 
           self.CourseTable.heading("cid",text="Course ID")
-          self.CourseTable.heading("name",text="name")
+          self.CourseTable.heading("name",text="Name")
           self.CourseTable.heading("duration",text="Duration")
           self.CourseTable.heading("charges",text="Charges")
           self.CourseTable.heading("description",text="Description")

@@ -3,7 +3,6 @@ from importlib.resources import contents
 from multiprocessing import parent_process
 from optparse import Values
 from tkinter import*
-from PIL import Image, ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
 
@@ -69,7 +68,7 @@ class reportClass:
                       self.full.config(text=row[5])
                       self.per.config(text=row[6])
                   else:
-                      messagebox.showerror("Error","No recording found",parent=self.root)
+                      messagebox.showerror("Error","No record found",parent=self.root)
           except Exception as ex:
                 messagebox.showerror("Error", f"Error due to {str(ex)}")
 

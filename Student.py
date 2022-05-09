@@ -1,8 +1,6 @@
 from importlib.resources import contents
 from multiprocessing import parent_process
-from optparse import Values
 from tkinter import*
-from PIL import Image, ImageTk
 from tkinter import ttk,messagebox
 import sqlite3
 class StudentClass:
@@ -60,7 +58,7 @@ class StudentClass:
         #========column 2============
           lbl_dob=Label(self.root,text="D.O.B",font=("goudy old style",15,'bold'),bg='white').place(x=370,y=60)
           lbl_contact=Label(self.root,text="Contact",font=("goudy old style",15,'bold'),bg='white').place(x=370,y=100)
-          lbl_addmission=Label(self.root,text="Addmission",font=("goudy old style",15,'bold'),bg='white').place(x=370,y=140)
+          lbl_addmission=Label(self.root,text="D.O.A",font=("goudy old style",15,'bold'),bg='white').place(x=370,y=140)
           lbl_course=Label(self.root,text="Course",font=("goudy old style",15,'bold'),bg='white').place(x=370,y=180)
           
 
@@ -112,7 +110,6 @@ class StudentClass:
           scrolly.pack(side=RIGHT,fill=Y)
           scrollx.config(command=self.CourseTable.xview)
           scrolly.config(command=self.CourseTable.yview)
-
           self.CourseTable.heading("roll",text="Roll No")
           self.CourseTable.heading("name",text="Name")
           self.CourseTable.heading("email",text="Email")
@@ -140,6 +137,7 @@ class StudentClass:
           self.CourseTable.bind("<ButtonRelease-1>",self.get_data)
           self.show()
 
+
 #======================FUNCTIONS=============================#
     def get_data(self,ev):
         self.txt_roll.config(state='readonly')
@@ -163,11 +161,14 @@ class StudentClass:
         self.txt_address.insert(END,row[11])
 
     def add(self):
+        no_var=self.var_contact
         con=sqlite3.connect(database="rms.db")
         cur=con.cursor()
         try:
             if self.var_roll.get()=="":
                messagebox.showerror("Error","Roll number is required",parent=self.root)
+            elif self.var_a_date.get()<= self.var_dob.get():
+               messagebox.showerror("Error","Enter valid date",parent=self.root)
             else:
                 cur.execute("select * from student where roll=?",(self.var_roll.get(),))
                 row=cur.fetchone()
@@ -187,6 +188,7 @@ class StudentClass:
                         self.var_city.get(),
                         self.var_pin.get(),
                         self.txt_address.get("1.0",END)
+
                     ))
                     con.commit()
                     messagebox.showinfo("Success","Student Added Successfully",parent=self.root)

@@ -87,6 +87,8 @@ class resultClass:
                 try:
                       if self.var_name.get() == "":
                             messagebox.showerror("Error", "please first search student record ", parent=self.root)
+                      elif self.var_marks.get() >= self.var_full_marks.get():
+                            messagebox.showerror("Error", "Enter valid marks ", parent=self.root)
                       else:
                             cur.execute("select * from result where roll=? and course=?", (self.var_roll.get(),self.var_course.get()))
                             row = cur.fetchone()
