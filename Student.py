@@ -71,7 +71,7 @@ class StudentClass:
           txt_addmission=Entry(self.root,textvariable=self.var_a_date,font=("goudy old style",15,'bold'),bg="lightyellow").place(x=490,y=140,width=200)
           self.txt_course=ttk.Combobox(self.root,textvariable=self.var_course,values=self.course_list,font=("goudy old style",15,'bold'),state='readonly',justify=CENTER)
           self.txt_course.place(x=490,y=180,width=200)
-          self.txt_course.set("select")
+          self.txt_course.set("Select")
 
                    
       
@@ -168,7 +168,9 @@ class StudentClass:
             if self.var_roll.get()=="":
                messagebox.showerror("Error","Roll number is required",parent=self.root)
             elif self.var_a_date.get()<= self.var_dob.get():
-               messagebox.showerror("Error","Enter valid date",parent=self.root)             
+               messagebox.showerror("Error","Enter valid date",parent=self.root)
+            elif len((self.var_contact.get()))!=10:
+               messagebox.showerror("Error","Enter valid mobile number",parent=self.root)
             else:
                 cur.execute("select * from student where roll=?",(self.var_roll.get(),))
                 row=cur.fetchone()
